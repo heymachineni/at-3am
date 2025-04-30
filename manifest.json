@@ -1,0 +1,21 @@
+{
+  "name": "Ambient Words",
+  "short_name": "Words",
+  "description": "A minimalist digital artwork that displays changing phrases in beautiful typography",
+  "start_url": "/index.html",
+  "display": "fullscreen",
+  "background_color": "#F8F3EB",
+  "theme_color": "#333333",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 
