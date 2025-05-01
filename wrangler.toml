@@ -1,0 +1,6 @@
+name = "echo"
+compatibility_date = "2023-05-01"
+main = "index.html"
+
+[site]
+bucket = "." 
