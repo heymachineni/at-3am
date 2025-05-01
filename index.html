@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo - A 3am experiment</title>
+    <meta name="description" content="A minimal space where words make sounds in silence.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Lora:ital@1&family=EB+Garamond:ital@1&family=Merriweather:ital@1&family=Vollkorn:ital@1&family=Source+Serif+Pro:ital@1&family=Noto+Serif:ital@1&family=Libre+Baskerville:ital@1&family=Cormorant+Garamond:ital@1&family=Bodoni+Moda:ital@1&family=PT+Serif:ital@1&family=Cinzel&family=Alice&family=Cardo:ital@1&family=Amiri:ital@1&family=Spectral:ital@1&family=Bitter:ital@1&family=Cormorant:ital@1&family=Lora:ital@1&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#333333">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://at-3am.firebaseapp.com/">
+    <meta property="og:title" content="Echo - A 3am experiment">
+    <meta property="og:description" content="A minimal space where words make sounds in silence.">
+    <meta property="og:image" content="preview.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://at-3am.firebaseapp.com/">
+    <meta property="twitter:title" content="Echo - A 3am experiment">
+    <meta property="twitter:description" content="A minimal space where words make sounds in silence.">
+    <meta property="twitter:image" content="preview.png">
+    <!-- Font links will be dynamically added -->
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/" style="text-decoration: none;">
+                <span id="text-logo" style="font-style: italic; font-size: 16px; color: #1d1d1d;">Echo</span>
+            </a>
+        </div>
+        <nav>
+            <a href="/thought" class="scramble-text">3am thought</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="phrase-container">
+            <h1 id="phrase"></h1>
+        </div>
+    </div>
+    <script src="phrases-data.js"></script>
+    <script src="scripts.js"></script>
+    <script src="text-scramble.js"></script>
+    <script>
+        // Register service worker for offline support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script>
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        
+        // Text logo font cycling - only on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const textLogo = document.getElementById('text-logo');
+            
+            // Array of available fonts (all in italic)
+            const fonts = [
+                'Playfair Display',
+                'Lora',
+                'EB Garamond',
+                'Merriweather',
+                'Crimson Pro',
+                'Vollkorn',
+                'Source Serif Pro',
+                'Noto Serif',
+                'Libre Baskerville',
+                'Cormorant Garamond',
+                'Bodoni Moda',
+                'Yrsa',
+                'DM Serif Display',
+                'Taviraj',
+                'Bree Serif',
+                'PT Serif',
+                'Cinzel',
+                'Alice',
+                'Cardo',
+                'Newsreader',
+                'Amiri',
+                'Castoro',
+                'Prata',
+                'Linden Hill',
+                'Libre Caslon Text',
+                'Nanum Myeongjo',
+                'Gentium Book Basic',
+                'Petrona',
+                'Rosarivo',
+                'Spectral',
+                'Sura',
+                'Arvo',
+                'Abhaya Libre',
+                'Roboto Serif',
+                'Fraunces',
+                'Bitter',
+                'Cormorant',
+                'Brygada 1918',
+                'Faustina',
+                'Lora',
+                'Headland One',
+                'Italiana',
+                'Literata',
+                'Solway',
+                'Cantata One',
+                'Markazi Text',
+                'Radley',
+                'Manuale',
+                'Lustria',
+                'Zilla Slab'
+            ];
+            
+            // Choose a random font on page load
+            const randomIndex = Math.floor(Math.random() * fonts.length);
+            textLogo.style.fontFamily = fonts[randomIndex];
+        });
+    </script>
+</body>
+</html> 

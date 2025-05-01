@@ -1,0 +1,34 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "redirects": [
+      {
+        "source": "/echo/at-3am",
+        "destination": "/thought",
+        "type": 301
+      },
+      {
+        "source": "/echo/at-3am.html",
+        "destination": "/thought",
+        "type": 301
+      },
+      {
+        "source": "/at-3am/thought",
+        "destination": "/thought",
+        "type": 301
+      },
+      {
+        "source": "/at-3am/thought.html",
+        "destination": "/thought",
+        "type": 301
+      }
+    ]
+  }
+} 
