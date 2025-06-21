@@ -143,4 +143,31 @@ h1 {
     height: 18px;
     fill: currentColor;
     margin-left: 5px;
+}
+
+/* Tap feedback half-circles */
+.tap-feedback {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 80px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+    z-index: 1000;
+}
+
+.tap-feedback.left {
+    left: 0;
+    border-radius: 0 40px 40px 0;
+}
+
+.tap-feedback.right {
+    right: 0;
+    border-radius: 40px 0 0 40px;
+}
+
+.tap-feedback.show {
+    opacity: 0.3;
 } 
